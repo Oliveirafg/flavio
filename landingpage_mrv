@@ -1,0 +1,979 @@
+%%[
+var @name, @Produto, @Image, @Bairro, @Email, @Cidade, @Estado
+
+set @name = RequestParameter("name")
+set @Produto = RequestParameter("Produto")
+set @Cidade = RequestParameter("Cidade")
+set @Bairro = RequestParameter("Bairro")
+set @Email = RequestParameter("Email")
+set @Image = RequestParameter("Image")
+set @Estado = RequestParameter("Estado")
+
+
+
+ InsertData(
+        "DE_Historic",
+        "Nome_do_imovel", RequestParameter("Produto"),
+        "Cidade", RequestParameter("Cidade"),
+        "Bairro", RequestParameter("Bairro"),
+        "Email", RequestParameter("Email"),
+        "name", RequestParameter("name"),
+        "Estado", RequestParameter("Estado"),
+        "Pergunta1", RequestParameter("Pergunta 1"),
+        "Pergunta2", RequestParameter("Pergunta 2"),
+        "DataEntrada", NOW()
+       )
+
+]%%
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content='text/html; charset=utf-8' />
+
+    <link rel="shortcut icon" href="https://www.mrv.com.br/favicon.ico?v=20191001" type="image/x-icon" />
+    <link rel="icon" href="https://www.mrv.com.br/favicon.ico?v=20191001" type="image/x-icon" />
+
+    <title>MRV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+   
+    <style>
+            html {
+                height: 100%;
+            }    
+            body{
+                overflow-x: hidden;
+            }   
+
+
+
+
+            .flex {
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+            }
+
+            .flex-wr {
+                flex-wrap: wrap;
+            }
+
+            .flex-ch {
+                justify-content: center;
+            }
+
+            .flex-ri {
+                justify-content: flex-end;
+            }
+
+            .flex-bv {
+                align-items: flex-end;
+            }
+
+            .flex-le {
+                justify-content: flex-start;
+            }
+
+            .flex-sp {
+                justify-content: space-between;
+            }
+
+            .flex-sa {
+                justify-content: space-around;
+            }
+
+            .flex-cv {
+                align-items: center;
+            }
+
+            *,
+            *::after,
+            *::before {
+                margin: 0;
+                padding: 0;
+                outline: none;
+                font-family: 'Roboto', sans-serif;     
+                line-height: 140%;
+            }
+
+            .container{
+                width:calc(100% - 10vw);
+                margin: 0 auto;
+                padding: 0 5vw;
+            }
+
+            .box-social{
+                width: 88px;
+                padding: 13px 0 9px 0;
+                border-bottom: 3px solid #d1d1d1;
+            }
+
+            .box-social img{
+                width: 100%;
+            }
+
+
+            .box-img-footer{
+                width: 47.1vw;
+                max-width: 643px;
+                min-width: 363px;
+            }
+
+            .box-img-footer img{
+                width: 100%;
+            }
+
+            .box-conteudo{
+                background-color: #ffffff;
+                text-align: left;
+                padding: 10px 0 30px 0;
+            }
+
+           
+
+            .box-radio{
+                position: relative;
+            }
+
+            .box-img-conteudo{
+                width: 100%;
+            }
+
+            .img-conteudo{
+                width: 25%;
+                padding: 0 4.5px;
+            }
+
+            .img-conteudo img{
+                width: 100%;
+            }
+
+            .img-conteudo-1 .img-logo-conteudo{
+                width: 35.4%;
+                max-width: 103px;
+                min-width: 47px;
+                display: block;
+            }
+
+            .img-conteudo-2 .img-logo-conteudo{
+                width: 58.42%;
+                max-width: 170px;
+                min-width: 75px;
+                display: block;
+            }
+
+            .img-conteudo-3 .img-logo-conteudo{
+                width: 51.9%;
+                max-width: 151px;
+                min-width: 72px;
+                display: block;
+            }
+
+            .img-conteudo-4 .img-logo-conteudo{
+                width: 41.24%;
+                max-width: 120px;
+                min-width: 55px;
+                display: block;
+            }
+
+            .img-conteudo-height{
+                height: 73px;
+                display: flex;
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+            }
+
+         
+
+
+          
+            .box-pergunta input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                top: calc(50% - 12.5px);
+                left: 0;
+                width: 25px;
+                height: 25px;
+                z-index: 2;
+            }
+
+           
+
+           .outros-input{
+                width: calc(100% - 24px);
+                height: 1px;
+                font-size: 1px;
+                border-color: #2b2b2b;
+                border-radius: 8px;
+                padding: 0 10px;
+                transition: .5s;
+                opacity: 0;
+           }
+
+           .outros-input.ativo{
+                height: 59px;
+                opacity: 1;
+                font-size: 20px;
+           }
+
+           .outros-input.red{
+                border: 2px solid #f03131;
+           }
+
+            .btn-enviar{
+                background: #793F98 0% 0% no-repeat padding-box;
+                border-radius: 8px;
+                text-align: center;
+                margin: 20px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                transition: .5s;
+                cursor: pointer;
+                box-shadow: none;
+                width: 170px;
+                height: 52px;
+                text-align: center;
+                font: normal normal bold 16px/21px Roboto;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                border: none    ;
+                text-decoration: none;
+            }
+
+            .btn-enviar:hover{
+                background: #AC41D8;
+            }
+
+            .img-logo-footer{
+                margin: 0 auto 20px auto;
+                display: block;
+
+            }
+
+           
+            footer{
+                background-color: #268049;
+                padding: 30px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            footer img{
+                margin: 0 5px;
+            }
+
+            .img-footer-1{
+                display: inline-block;
+                margin: 5px 0;
+                margin-right: 18px;
+            }
+
+            .img-footer-2{
+                display: inline-block;
+                margin: 5px 0;
+            }
+            
+            .box-img-alt-footer{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            @media (max-width: 550px) {
+                .img-footer-1{
+                    margin-right: 0;
+                }
+            }
+
+
+ 
+
+            .title-header{
+                font-size: 46px;
+                color: #DAC698;
+                text-align: left;
+                max-width: 370px;
+                margin: 10px 0;
+                width: 100%;
+                font-weight: 400;
+            }
+
+            .text-header{
+                font-size: 18px;
+                color: #DAC698;
+                text-align: left;
+                max-width: 370px;
+                margin: 10px 0;
+                width: 100%;
+            }
+ 
+          
+
+            .container-header{
+                justify-content: flex-start;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 15px;
+                margin: inherit;
+            }
+
+            .logo-header{
+                margin-left: 0%;
+            }
+
+            .box-icons{
+                display: flex;
+                align-items: center;
+            }
+
+            .box-icon{
+                display: flex;
+                align-items: center;
+               
+            }
+
+            .box-icon:first-of-type{
+                margin-right: 35px;
+            }
+
+            .box-icon img{
+                margin-right: 15px;
+            }
+            input[type=text], input[type=email]{
+                width: calc(100% - 20px);
+                border: 0;
+                text-align: left;
+                font: normal normal 300 18px/24px Roboto;
+                letter-spacing: 0px;
+                color: #282828;
+                border-bottom: 1px solid #C3AE7F;
+                margin: 10px 0;
+                padding: 15px 10px 10px 10px;
+            }
+
+            .float-container {
+                box-sizing: border-box;
+                position: relative;
+                width: 100%;
+                
+            }
+            /* .float-container input {
+                border: none;
+                font-size: 16px;
+                outline: 0;
+                padding: 16px 0 10px;
+                width: 100%;
+            } */
+            .float-container label {
+                font: normal normal 300 18px/24px Roboto;
+                position: absolute;
+                transform-origin: top left;
+                transform: translate(0, 21px) scale(1);
+                transition: all 0.1s ease-in-out;
+                margin-left: 10px;
+            }
+            .float-container.active label {
+                transform: translate(0, 4px) scale(0.75);
+            }
+
+            .title-input{
+                margin-bottom: 0;
+            }
+            h3 span{
+                font: normal normal 300 24px/26px Roboto;
+            }
+
+            
+            /* The container */
+            .box--perg-1 .label-pergunta {
+                display: block;
+                position: relative;
+                padding-left: 35px;
+                margin: 20px 0;
+                cursor: pointer;
+                font:  normal normal normal 16px/21px Roboto;
+                color: #000000;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            /* Hide the browser's default radio button */
+            .box--perg-1 .label-pergunta input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            /* Create a custom radio button */
+            .box--perg-1 .label-pergunta .checkmark {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                height: 21px;
+                width: 21px;
+                border: 2px solid #079D56;
+                background-color: #ffffff;
+                border-radius: 50%;
+                transition: .5s;
+            }
+
+            /* On mouse-over, add a grey background color */
+            .box--perg-1 .label-pergunta:hover input ~ .checkmark {
+                border: 2px solid #14de7e;
+                background-color: #ffffff;
+                transition: .5s;
+            }
+
+            /* When the radio button is checked, add a blue background */
+            .box--perg-1 .label-pergunta input:checked ~ .checkmark {
+                background-color: #079D56;
+                height: 21px;
+                width: 21px;
+                border: 2px solid #14de7e;
+            }
+
+            .white--circle{
+                height: 17px;
+                width: 17px;
+                border: 2px solid #ffffff;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0px;
+            }
+                   
+            
+            /* The container */
+            .box--perg-2 .label-pergunta {
+                display: inline-block;
+                position: relative;
+                width: calc(170px - 30px);
+                height: calc(170px - 40px);
+                padding: 20px 15px;
+                border-radius: 18px;
+                margin: 20px 15px 20px 0;
+                cursor: pointer;
+                font: normal normal normal 16px/21px Roboto;
+                color: #000000;
+                text-align: center;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            /* Hide the browser's default radio button */
+            .box--perg-2 .label-pergunta input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            /* Create a custom radio button */
+            .box--perg-2 .label-pergunta .checkmark {
+                position: absolute;
+                z-index: 1;
+                top: 13px;
+                right: 16px;
+                height: 14px;
+                width: 14px;
+                border: 2px solid #006B3F;
+                background-color: #ffffff;
+                transition: .5s;
+            }
+
+            /* On mouse-over, add a grey background color */
+            .box--perg-2 .label-pergunta:hover input ~ .checkmark {
+                border: 2px solid #079d56;
+                background-color: #ffffff;
+                transition: .5s;
+            }
+
+            /* When the radio button is checked, add a blue background */
+            .box--perg-2 .label-pergunta input:checked ~ .checkmark {
+                background-color: #ffffff;
+                border: 2px solid #14de7e;
+            }
+            
+
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .box--perg-2 .label-pergunta .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+
+            /* Show the checkmark when checked */
+            .box--perg-2 .label-pergunta input:checked ~ .checkmark:after {
+                display: block;
+            }
+
+            /* Style the checkmark/indicator */
+            .box--perg-2 .label-pergunta .checkmark:after {
+                left: 4px;
+                top: 1px;
+                width: 4px;
+                height: 7px;
+                border: solid black;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }  
+
+             /* Show the checkmark when checked */
+             .box--perg-2 .label-pergunta input:checked ~ .box--img-perg-2 > .img--inativa,
+             .box--perg-2 .label-pergunta input ~ .box--img-perg-2 > .img--ativa {
+                opacity: 0;
+            }
+
+            /* Show the checkmark when checked */
+            .box--perg-2 .label-pergunta input:checked ~ .box--img-perg-2 > .img--ativa,
+             .box--perg-2 .label-pergunta input ~ .box--img-perg-2 > .img--inativa {
+                opacity: 1;
+            }
+
+            .box--perg-2 .label-pergunta input ~ .text--perg-2{
+                color: #000000;
+                transition: .5s;  
+            }
+
+            .box--perg-2 .label-pergunta input:checked ~ .text--perg-2{
+                color: #ffffff;
+                transition: .5s;  
+            }
+
+            .div--bg-perg-2{
+                width: 170px;
+                height: 170px;
+                border-radius: 15px;
+                position: absolute;
+                border: 2px solid #006B3F;
+                top: 0;
+                left: 0;
+                z-index: 0;   
+                transition: .5s;             
+            }
+
+            .box--perg-2 .label-pergunta:hover input ~ .div--bg-perg-2 {
+                border: 2px solid #079d56;
+                background-color: #ffffff;
+                transition: .5s;
+            }
+
+
+            .box--perg-2 .label-pergunta input:checked ~ .div--bg-perg-2{
+                background: transparent linear-gradient(45deg, #006B3F 0%, #079D56 100%) 0% 0% no-repeat padding-box;
+                border: 2px solid #14de7e;
+                transition: .5s;
+            }
+
+            .box--img-perg-2{
+                position: relative;
+                height: 64px;
+                width: 64px;
+                margin: 0 auto;
+                margin-bottom: 16px;
+                margin-top: 11px;
+            }
+
+            .box--perg-2 .label-pergunta img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: .5s;
+            }
+            .text--perg-2, .box--img-perg-2{
+                position: relative;
+                z-index: 1;
+            }
+
+            h3{
+                text-align: left;
+                font: normal normal bold 24px/26px Roboto;
+                letter-spacing: 0px;
+                color: #292728;
+                opacity: 1;
+                margin: 17px 0;
+            }
+            .text-conteudo{
+                text-align: left;
+                font: normal normal normal 20px/27px  Roboto;
+                letter-spacing: 0px;
+                color: #000000;
+                margin: 10px 0;
+            }
+
+            .box--perg-1 .label-pergunta-check a{
+                text-align: left;
+                text-decoration: underline;
+                font: normal normal 400 16px/21px Roboto;
+                letter-spacing: 0px;
+                color: #000000;
+            }
+
+            .box--logo{
+                width: 100%;
+                padding: 15px 0;
+                background-color: #ffffff;
+            }
+
+            .box--logo img{
+                margin-left: 5vw;
+            }
+
+            .box--text-header{
+                width: 100%;
+                padding: 15px 0;
+                background-color: #006B3F;
+                
+            }
+            .text--header{
+                margin:0 5vw;
+                font: normal normal normal 18px/24px Roboto;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                opacity: 1;
+            }
+
+            .box--nome-empreend{
+                background: url(%%=v(@image)=%%) no-repeat center center;
+                background-size: cover;
+                min-height: 35vw;
+                width: 100vw;
+                position: relative;
+            }
+            .text--empreend{
+                text-align: left;
+                font: normal normal 800 37px/49px Roboto;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                font-weight:400;
+            }
+
+            .box--empreend{
+                position: absolute;
+                bottom: 2vw;
+                padding-left: 5vw;
+            }
+
+            .img--linha{
+                width: 100%;
+            }
+
+            .box--perg-2{
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .div--logo-footer{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                height: 150px;
+                background-color: #ffffff;
+            }
+
+            /* The Modal (background) */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100%;
+                max-width: 100vw;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+            }
+
+            /* Modal Content */
+            .modal-content {
+                max-width: 412px;
+                height: 160px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                box-shadow: 0px 3px 10px #00000029;
+                margin: auto;
+                padding: 20px;
+                border-radius: 18px;
+                width: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+            }
+
+            /* The Close Button */
+            .close {
+            color: #006B3F;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 7px;
+            right: 21px;
+            }
+
+            .close:hover,
+            .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            }
+
+            @media (max-width: 748px) {
+                .btn-enviar{
+                    margin: 20px auto;
+                }
+                .box--perg-2 .label-pergunta{
+                    margin: 12px 10px 12px 10px;
+                }
+                .text--empreend {
+                    font: normal normal 400 23px/30px Roboto;
+                }
+                .text-conteudo {
+                    font: normal normal normal 19px/24px Roboto;
+                }
+   }
+           
+    </style>
+</head>
+
+<body>
+    <header>
+       
+            <div class="logo-img box--logo">
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/d0c401d6-c024-46a7-bbff-c85cdb74d821.png" alt="">
+                </a>
+            </div>
+            <div class="box--text-header">
+                <p class="text--header">
+                    Olá, %%=v(@name)=%%<br/>
+                    Obrigado por se cadastrar para o pré-lançamento do %%=v(@Produto)=%%.
+                </p>
+            </div>
+
+            <div class="box--nome-empreend">
+                <div class="box--empreend">
+                    <p class="text--empreend">
+                        %%=v(@Produto)=%%
+                    </p>
+                    <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/8d4a0c0b-7aa5-4b61-bf4d-49769290c5c4.png" class="img--linha" alt="">
+                </div>
+            </div>
+    </header>
+    <main>
+        <div class="box-conteudo">
+            <form action="%%=RequestParameter('PAGEURL')=%%" method="post"> 
+                <div class="container">
+                     
+                    <p class="text-conteudo">
+                        Você ficará por dentro de todas as informações do lançamento em primeira mão. Enquanto isso, queremos saber um pouco mais sobre você e suas preferências:
+                         <br/><br/>
+                        <strong>01. Quero comprar o meu imóvel porque:</strong>
+                    </p>
+                    
+                    <div class="box--perg-1">
+                        <label class="label-pergunta">
+                            Estou casando e quero um espaço para minha família.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Estou casando e quero um espaço para minha família. | ">
+                            <span class="checkmark"><span class="white--circle"></span> </span>
+                        </label>
+                        <label class="label-pergunta">
+                            Quero morar mais perto do trabalho.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Quero morar mais perto do trabalho. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label>
+                        <label class="label-pergunta">
+                            Tenho/quero filhos e busco um espaço maior para eles.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Tenho/quero filhos e busco um espaço maior para eles. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label>
+                        <label class="label-pergunta">
+                            Procuro minha independência e quero morar sozinho.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Procuro minha independência e quero morar sozinho. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label>
+                        <label class="label-pergunta">
+                            Não quero mais pagar aluguel.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Não quero mais pagar aluguel. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label>
+                        <label class="label-pergunta">
+                            Quero investir em um imóvel.
+                            <input type="checkbox" id="Pergunta1" name="Pergunta1" value="Quero investir em um imóvel. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label>
+                        <label class="label-pergunta">
+                            Nenhuma das anteriores.
+                            <input type="radio" id="Pergunta1" name="Pergunta1" value="Nenhuma das anteriores. | ">
+                            <span class="checkmark"><span class="white--circle"></span></span>
+                        </label> 
+
+                    </div>
+                    <p class="text-conteudo">
+                        <strong>02. Temas de interesse sobre um novo imóvel</strong>
+                    </p>
+
+                    <div class="box--perg-2">
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Decoração | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/4f132763-1755-4eb4-9244-f80202b3a116.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/257ab150-ebd0-4ba9-8ffa-e1a42f3e6f25.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Decoração</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Obras e manutenção | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/a0764dbc-12ff-4734-85a3-8aeb41787aae.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/886676f1-cb98-4e6e-85be-8e924390fb5a.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Obras e <br/>
+                                manutenção</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Segurança | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/4da2d4a6-a68e-4416-82af-538260035c89.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/63680037-6230-4f84-9d73-4e77b2ac39a7.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Segurança</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Planejamento financeiro | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/b3689280-0eec-4127-9f91-c866d61100ea.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/7cbb4486-96da-4f93-909e-0b583dc1bf01.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Planejamento<br/>
+                                financeiro</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Informações sobre o bairro | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/911f7928-cef9-4422-96e1-c1a7362ae432.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/1fed3195-e3e0-4e4a-9358-34ed06a93fb8.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Informações<br/>
+                                sobre o bairro</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                        <label class="label-pergunta">
+                            <input type="checkbox" id="Pergunta2" name="Pergunta2" value="Pets | ">
+                            <div class="box--img-perg-2">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/9d51e4f1-ef15-4eb6-a7bd-08f8e33d4ff9.png" class="img--inativa" alt="">
+                                <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/cfe983b7-6075-47a7-8ed2-32cbcabdd51e.png" class="img--ativa" alt="">
+                            </div>
+                            <span class="text--perg-2">Pets</span>                            
+                            <span class="checkmark"></span>
+                            <div class="div--bg-perg-2"></div>
+                        </label>
+
+                       
+                    </div>
+                    <button type="submit" class="btn-enviar" id="enviar-form">Enviar</button>
+                </div>
+            </form>
+        </div>
+      
+    </main>
+    <footer class="">
+        <a href="https://www.facebook.com/mrv" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/9b7365fb-beb6-4d69-87d2-d2d493f03881.jpg" alt="" class="img--footer">
+        </a>
+        <a href="https://instagram.com/mrv" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/382c452b-a2b5-43e2-aff1-cdd8b27668c1.jpg" alt="" class="img--footer">
+        </a>
+        <a href="https://www.twitter.com/mrvoficial" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/5e11fefb-4972-4a74-9f45-8af69b7b154e.jpg" alt="" class="img--footer">
+        </a>
+        <a href="https://www.youtube.com/mrvengenharia" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/0fb59b5c-39a6-42e2-8cc6-b8a19cf19350.jpg" alt="" class="img--footer">
+        </a>
+        <a href="https://www.linkedin.com/company/mrvengenharia" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/84c84193-8d21-42eb-8bbc-c4ae67091a3a.jpg" alt="" class="img--footer">
+        </a>
+    </footer> 
+    <div class="div--logo-footer">
+        <img src="https://image.info.mrv.com.br/lib/fe3e157175640475751675/m/1/d0c401d6-c024-46a7-bbff-c85cdb74d821.png" alt="">
+    </div> 
+    
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Cadastro realizado com sucesso!</p>
+    </div>
+  
+  </div>
+</body>
+  
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("enviar-form");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+</html>
+
