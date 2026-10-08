@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canagá — Chocolate Profissional de Cacau Amazônico</title>
+<meta name="description" content="Chocolate profissional puro e nobre, 100% cacau amazônico. Ao leite 33,7%, amargo 70% e branco 26,2% em barras de 2,01 kg para confeitaria, panificação e chocolateria. Envio para todo o Brasil.">
+<meta property="og:title" content="Canagá — Chocolate Profissional de Cacau Amazônico">
+<meta property="og:description" content="A nobreza em cada detalhe. Chocolate puro e nobre para quem cria.">
+<meta property="og:image" content="assets/pack-amargo-hero.webp">
+<meta name="theme-color" content="#2a1409">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cacau-900:#1b0d06;
+  --cacau-800:#2a1409;
+  --cacau-700:#3d1f10;
+  --cacau-600:#5b3327;
+  --cacau-500:#7a4a35;
+  --cacau-400:#a0674b;
+  --creme-50:#fffaf4;
+  --creme-100:#fcf3ee;
+  --creme-200:#f3e4d8;
+  --creme-300:#e6cfbc;
+  --ouro-500:#c89b4a;
+  --ouro-400:#d9b36b;
+  --ouro-300:#efd9a8;
+  --laranja:#d35400;
+  --ink:#1f120b;
+  --muted:#7a6457;
+  --bg:var(--creme-50);
+  --fg:var(--ink);
+  --radius:20px;
+  --shadow-sm:0 1px 2px rgba(43,20,9,.06),0 2px 8px rgba(43,20,9,.06);
+  --shadow-md:0 8px 24px rgba(43,20,9,.12),0 2px 6px rgba(43,20,9,.06);
+  --shadow-lg:0 30px 60px -20px rgba(43,20,9,.35);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+@media(max-width:640px){.wrap{width:calc(100% - 32px)}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--laranja)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.eyebrow.light{color:var(--ouro-400)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--cacau-600);color:#fff;box-shadow:0 10px 30px -10px rgba(91,51,39,.7)}
+.btn-primary:hover{background:var(--cacau-700)}
+.btn-gold{background:linear-gradient(135deg,var(--ouro-400),var(--ouro-500));color:var(--cacau-900);box-shadow:0 10px 30px -10px rgba(200,155,74,.8)}
+.btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-outline{border:1.5px solid var(--cacau-600);color:var(--cacau-600)}
+.btn-outline:hover{background:var(--cacau-600);color:#fff}
+.btn-wa{background:#25d366;color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ticker */
+.ticker{background:var(--cacau-900);color:var(--ouro-300);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:0;animation:ticker 40s linear infinite}
+.ticker span{padding:10px 32px;display:inline-flex;align-items:center;gap:10px}
+.ticker span::after{content:"✦";color:var(--ouro-500);margin-left:32px;font-size:10px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* header */
+.header{position:sticky;top:0;z-index:50;transition:background .4s,box-shadow .4s,backdrop-filter .4s}
+.header.scrolled{background:rgba(255,250,244,.85);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(43,20,9,.08)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:46px;width:auto}
+.nav{display:flex;gap:34px;font-size:14.5px;font-weight:500}
+.nav a{position:relative;padding:6px 0;color:var(--cacau-700)}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--laranja);transition:width .35s var(--ease)}
+.nav a:hover::after{width:100%}
+.header-cta{display:flex;align-items:center;gap:12px}
+.header-cta .btn{padding:12px 20px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;color:var(--cacau-700)}
+.burger svg{width:24px;height:24px}
+.mobile-nav{position:fixed;inset:0;z-index:60;background:var(--cacau-900);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:40px;gap:22px;transform:translateY(-100%);visibility:hidden;transition:transform .55s var(--ease),visibility 0s .55s;font-family:'Fraunces',serif;font-size:34px}
+.mobile-nav.open{transform:none;visibility:visible;transition:transform .55s var(--ease),visibility 0s}
+.mobile-nav a{opacity:.9}
+.mobile-nav .close{position:absolute;top:22px;right:22px;font-family:'Inter';font-size:13px;letter-spacing:.15em;text-transform:uppercase;opacity:.7}
+@media(max-width:900px){.nav,.header-cta .btn-outline{display:none}.burger{display:flex}}
+
+/* hero */
+.hero{position:relative;min-height:calc(100vh - 118px);display:grid;align-items:center;overflow:hidden;background:var(--cacau-900);color:#fff;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.08);animation:kenburns 18s ease-out forwards;opacity:.78}
+@keyframes kenburns{to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(60% 80% at 20% 50%,rgba(27,13,6,.55),transparent 70%),
+  linear-gradient(180deg,rgba(27,13,6,.75) 0%,rgba(27,13,6,.15) 35%,rgba(27,13,6,.25) 70%,rgba(27,13,6,.95) 100%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding:80px 0 100px;align-items:center}
+.hero h1{font-size:clamp(44px,6.4vw,92px);font-weight:300;line-height:1.02;margin:22px 0 26px;text-wrap:balance}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--ouro-300)}
+.hero p{font-size:clamp(16px,1.4vw,19px);max-width:52ch;color:rgba(255,255,255,.82)}
+.hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.hero-visual{position:relative;justify-self:center;width:min(100%,520px)}
+.hero-visual .pack{border-radius:28px;box-shadow:var(--shadow-lg),0 0 0 1px rgba(255,255,255,.08);transform:rotate(-2deg);transition:transform 1.2s var(--ease)}
+.hero-visual:hover .pack{transform:rotate(0) scale(1.02)}
+.hero-chip{position:absolute;background:rgba(255,250,244,.92);color:var(--cacau-800);backdrop-filter:blur(10px);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-md);display:flex;gap:12px;align-items:center;animation:float 6s ease-in-out infinite}
+.hero-chip b{display:block;font-family:'Fraunces';font-size:26px;line-height:1;font-weight:500}
+.hero-chip small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero-chip.one{top:8%;left:-10%}
+.hero-chip.two{bottom:12%;right:-8%;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint i{width:1px;height:38px;background:linear-gradient(var(--ouro-400),transparent);animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding:60px 0 110px}.hero-visual{width:min(100%,380px);margin-top:10px}.hero-chip.one{left:-4%}.hero-chip.two{right:-4%}}
+
+/* trust bar */
+.trust{background:var(--creme-100);border-top:1px solid var(--creme-300);border-bottom:1px solid var(--creme-300)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 0}
+.trust div{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--cacau-700)}
+.trust svg{width:30px;height:30px;color:var(--laranja);flex:none}
+.trust b{display:block;font-weight:600}
+.trust span{color:var(--muted);font-size:13px}
+@media(max-width:900px){.trust .wrap{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.trust .wrap{grid-template-columns:1fr}}
+
+section{padding:clamp(80px,10vw,130px) 0}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(34px,4.4vw,58px);margin-top:16px;text-wrap:balance}
+.sec-head h2 em{font-style:italic;color:var(--laranja)}
+@media(max-width:800px){.sec-head{grid-template-columns:1fr;gap:18px}}
+
+/* products */
+.products{background:var(--bg)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:960px){.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid-3{grid-template-columns:1fr}}
+.card{position:relative;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .5s var(--ease),box-shadow .5s var(--ease);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+.card-media{position:relative;aspect-ratio:1;overflow:hidden;background:var(--creme-100)}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:opacity .6s var(--ease),transform 1s var(--ease)}
+.card-media img.alt{position:absolute;inset:0;opacity:0}
+.card:hover .card-media img.alt{opacity:1}
+.card:hover .card-media img{transform:scale(1.04)}
+.badge{position:absolute;top:16px;left:16px;background:var(--cacau-900);color:var(--ouro-300);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:999px;font-weight:600;z-index:2}
+.badge.ship{left:auto;right:16px;background:#fff;color:var(--cacau-700)}
+.pct{position:absolute;bottom:16px;left:16px;font-family:'Fraunces';font-size:34px;font-weight:400;line-height:1;color:var(--ouro-300);background:var(--cacau-900);padding:12px 16px 10px;border-radius:16px;box-shadow:var(--shadow-md);display:flex;align-items:baseline;gap:6px}
+.pct small{font-size:10px;font-family:'Inter';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.card-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card-body h3{font-size:27px;font-weight:500}
+.card-body h3 span{display:block;font-size:14px;font-family:'Inter';font-weight:500;color:var(--muted);margin-top:4px}
+.card-body p{font-size:14.5px;color:var(--muted)}
+.specs{display:flex;flex-wrap:wrap;gap:8px}
+.specs span{font-size:12px;font-weight:500;padding:6px 11px;border-radius:999px;background:var(--creme-100);color:var(--cacau-700);border:1px solid var(--creme-300)}
+.card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--creme-200)}
+.card-foot .price{font-size:13px;color:var(--muted)}
+.card-foot .price b{display:block;color:var(--cacau-700);font-size:14px}
+.card-foot .btn{padding:12px 20px;font-size:14px}
+.card details{font-size:13.5px;color:var(--cacau-700)}
+.card summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:8px;color:var(--laranja)}
+.card summary::after{content:"+";font-size:18px;line-height:1;margin-left:auto;transition:transform .3s}
+.card details[open] summary::after{transform:rotate(45deg)}
+.card details ul{margin:10px 0 0 18px;color:var(--muted)}
+
+/* selector */
+.selector{background:var(--cacau-900);color:#fff;position:relative;overflow:hidden}
+.selector::before{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 50% at 80% 20%,rgba(200,155,74,.18),transparent 70%),radial-gradient(40% 50% at 10% 90%,rgba(211,84,0,.18),transparent 70%);pointer-events:none}
+.selector .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.selector h2{font-size:clamp(34px,4.2vw,56px);margin:16px 0 18px;text-wrap:balance}
+.selector h2 em{font-style:italic;color:var(--ouro-300)}
+.selector .lead{color:rgba(255,255,255,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.2);font-size:14px;font-weight:500;color:rgba(255,255,255,.85);transition:all .3s var(--ease)}
+.chip:hover{border-color:var(--ouro-400);color:#fff}
+.chip.active{background:var(--ouro-400);border-color:var(--ouro-400);color:var(--cacau-900)}
+.result{background:rgba(255,250,244,.06);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:30px;backdrop-filter:blur(10px);display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:center;min-height:270px;transition:opacity .4s}
+.result.fade{opacity:0}
+.result img{width:150px;height:150px;object-fit:cover;border-radius:18px;box-shadow:var(--shadow-lg)}
+.result .tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro-400);font-weight:600}
+.result h3{font-size:30px;margin:8px 0 10px}
+.result p{color:rgba(255,255,255,.75);font-size:14.5px}
+.result .why{margin-top:14px;font-size:13px;color:var(--ouro-300);font-style:italic;font-family:'Fraunces'}
+@media(max-width:900px){.selector .wrap{grid-template-columns:1fr;gap:40px}}
+@media(max-width:520px){.result{grid-template-columns:1fr}.result img{width:100%;height:200px}}
+
+/* origem */
+.origem .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.origem h2{font-size:clamp(34px,4.4vw,58px);margin:16px 0 22px;text-wrap:balance}
+.origem h2 em{font-style:italic;color:var(--laranja)}
+.origem p{color:var(--muted);margin-bottom:18px;font-size:16.5px}
+.origin-list{display:grid;gap:14px;margin-top:30px}
+.origin-list li{list-style:none;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:18px;border-radius:18px;background:#fff;box-shadow:var(--shadow-sm)}
+.origin-list .flag{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:var(--creme-100)}
+.origin-list b{display:block;font-weight:600;color:var(--cacau-800)}
+.origin-list span{font-size:14px;color:var(--muted)}
+.collage{position:relative;aspect-ratio:1}
+.collage img{position:absolute;border-radius:24px;object-fit:cover;box-shadow:var(--shadow-lg)}
+.collage .a{width:68%;height:68%;left:0;top:0}
+.collage .b{width:46%;height:46%;right:0;bottom:0;border:8px solid var(--bg)}
+.collage .c{width:38%;height:30%;left:8%;bottom:4%;border:8px solid var(--bg)}
+.collage .stamp{position:absolute;right:6%;top:10%;width:120px;height:120px;border-radius:50%;background:var(--cacau-900);color:var(--ouro-300);display:grid;place-items:center;text-align:center;font-family:'Fraunces';font-size:13px;line-height:1.2;padding:16px;animation:spin 24s linear infinite;box-shadow:var(--shadow-lg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.origem .wrap{grid-template-columns:1fr;gap:50px}}
+
+/* numbers */
+.numbers{background:var(--creme-100);border-block:1px solid var(--creme-300);padding:50px 0}
+.numbers .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.numbers b{display:block;font-family:'Fraunces';font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--cacau-700);line-height:1}
+.numbers span{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:block;margin-top:10px}
+@media(max-width:800px){.numbers .wrap{grid-template-columns:1fr 1fr}}
+
+/* temper */
+.temper h2{font-size:clamp(34px,4.4vw,58px);margin-top:16px;text-wrap:balance}
+.temper h2 em{font-style:italic;color:var(--laranja)}
+.tabs{display:inline-flex;background:var(--creme-100);border:1px solid var(--creme-300);border-radius:999px;padding:5px;gap:4px;margin-top:40px}
+.tab{padding:11px 22px;border-radius:999px;font-size:14px;font-weight:600;color:var(--cacau-600);transition:all .3s var(--ease)}
+.tab.active{background:var(--cacau-600);color:#fff;box-shadow:var(--shadow-sm)}
+.curve{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;margin-top:40px;align-items:center}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:#fff;border-radius:22px;padding:26px 22px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.step::before{content:attr(data-n);position:absolute;right:14px;top:8px;font-family:'Fraunces';font-size:64px;color:var(--creme-200);line-height:1;font-weight:300}
+.step small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja);font-weight:600}
+.step b{display:block;font-family:'Fraunces';font-size:40px;font-weight:300;color:var(--cacau-800);margin:10px 0 6px;line-height:1}
+.step b sup{font-size:18px}
+.step p{font-size:13.5px;color:var(--muted)}
+.curve img{border-radius:28px;aspect-ratio:4/3;object-fit:cover;box-shadow:var(--shadow-lg)}
+.note{margin-top:22px;font-size:13px;color:var(--muted)}
+@media(max-width:900px){.curve{grid-template-columns:1fr}}
+@media(max-width:600px){.steps{grid-template-columns:1fr}}
+
+/* gallery */
+.gallery{background:var(--cacau-900);color:#fff}
+.gallery h2{font-size:clamp(34px,4.4vw,58px);margin-top:16px;text-wrap:balance}
+.gallery h2 em{font-style:italic;color:var(--ouro-300)}
+.masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+.masonry figure{position:relative;border-radius:18px;overflow:hidden;cursor:zoom-in}
+.masonry img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.masonry figure:hover img{transform:scale(1.06)}
+.masonry figcaption{position:absolute;inset:auto 0 0 0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(27,13,6,.85));font-family:'Fraunces';font-size:18px;opacity:0;transform:translateY(8px);transition:all .5s var(--ease)}
+.masonry figure:hover figcaption{opacity:1;transform:none}
+.masonry .tall{grid-row:span 2}
+.masonry .wide{grid-column:span 2}
+@media(max-width:900px){.masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(27,13,6,.95);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:min(90vw,900px);max-height:85vh;border-radius:20px;box-shadow:var(--shadow-lg)}
+.lightbox button{position:absolute;top:20px;right:24px;color:#fff;font-size:14px;letter-spacing:.15em;text-transform:uppercase;opacity:.8}
+
+/* para quem */
+.quem .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.quem h2{font-size:clamp(34px,4.4vw,58px);margin-top:16px;text-wrap:balance}
+.quem h2 em{font-style:italic;color:var(--laranja)}
+.who{background:#fff;border-radius:22px;padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.who:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.who .ic{width:52px;height:52px;border-radius:16px;background:var(--creme-100);display:grid;place-items:center;color:var(--laranja);margin-bottom:20px}
+.who .ic svg{width:26px;height:26px}
+.who h3{font-size:24px;font-weight:500;margin-bottom:8px}
+.who p{font-size:14.5px;color:var(--muted)}
+@media(max-width:960px){.quem .grid-4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.quem .grid-4{grid-template-columns:1fr}}
+
+/* faq */
+.faq{background:var(--creme-100);border-top:1px solid var(--creme-300)}
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+.faq h2{font-size:clamp(34px,4.4vw,58px);margin-top:16px;text-wrap:balance}
+.faq h2 em{font-style:italic;color:var(--laranja)}
+.acc{border-top:1px solid var(--creme-300)}
+.acc details{border-bottom:1px solid var(--creme-300)}
+.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-family:'Fraunces';font-size:21px;font-weight:500;color:var(--cacau-800)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary i{width:30px;height:30px;border-radius:50%;border:1px solid var(--cacau-400);display:grid;place-items:center;flex:none;font-style:normal;transition:transform .35s var(--ease),background .3s}
+.acc details[open] summary i{transform:rotate(45deg);background:var(--cacau-600);color:#fff;border-color:var(--cacau-600)}
+.acc p{padding:0 0 22px;color:var(--muted);font-size:15px;max-width:60ch}
+@media(max-width:900px){.faq .wrap{grid-template-columns:1fr;gap:30px}}
+
+/* contato */
+.contato{background:var(--cacau-900);color:#fff;position:relative;overflow:hidden}
+.contato::after{content:"";position:absolute;right:-10%;top:-20%;width:60%;height:140%;background:url('assets/temperagem-mesa.webp') center/cover;opacity:.18;mask-image:linear-gradient(90deg,transparent,#000 40%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);pointer-events:none}
+.contato .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contato h2{font-size:clamp(36px,4.6vw,62px);margin:16px 0 20px;text-wrap:balance}
+.contato h2 em{font-style:italic;color:var(--ouro-300)}
+.contato .lead{color:rgba(255,255,255,.72)}
+.form{background:rgba(255,250,244,.05);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:34px;backdrop-filter:blur(10px);display:grid;gap:14px}
+.form label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ouro-400);font-weight:600;display:grid;gap:8px}
+.form input,.form select,.form textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.25);color:#fff;font:inherit;font-size:15px;letter-spacing:0;text-transform:none}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--ouro-400);outline-offset:1px}
+.form select option{color:#000}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .btn{margin-top:8px;width:100%}
+.form small{color:rgba(255,255,255,.5);font-size:12px;text-align:center}
+@media(max-width:900px){.contato .wrap{grid-template-columns:1fr}}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}.form{padding:24px}}
+
+/* footer */
+footer{background:var(--cacau-900);color:rgba(255,255,255,.7);border-top:1px solid rgba(255,255,255,.08);padding:60px 0 30px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h4{color:#fff;font-family:'Fraunces';font-weight:500;font-size:18px;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px;font-size:14px}
+footer a:hover{color:var(--ouro-300)}
+footer .brand img{height:52px;filter:brightness(0) invert(1) opacity(.9);margin-bottom:16px}
+footer .brand p{font-size:14px;max-width:34ch}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;transition:all .3s}
+.social a:hover{background:var(--ouro-400);color:var(--cacau-900);border-color:var(--ouro-400)}
+.social svg{width:18px;height:18px}
+.copy{margin-top:50px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:20px;font-size:12.5px;flex-wrap:wrap;color:rgba(255,255,255,.45)}
+@media(max-width:900px){footer .wrap{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){footer .wrap{grid-template-columns:1fr}}
+
+/* floating wa */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:transform .35s var(--ease)}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:pulse 2.2s infinite}
+@keyframes pulse{to{transform:scale(1.6);opacity:0}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.12s}.reveal[data-delay="2"]{transition-delay:.24s}.reveal[data-delay="3"]{transition-delay:.36s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:var(--cacau-800);color:#fff;padding:14px 22px;border-radius:999px;font-size:14px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:all .4s var(--ease);z-index:80}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker">
+<span>Envios para todo o Brasil</span><span>Parcele em até 5x sem juros</span><span>100% cacau amazônico</span><span>Barras de 2,01 kg</span><span>Puro e nobre</span>
+</div></div>
+
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Canagá"><img src="assets/logo.png" alt="Canagá"></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#chocolates">Chocolates</a>
+      <a href="#escolha">Qual usar?</a>
+      <a href="#origem">Origem</a>
+      <a href="#tecnica">Técnica</a>
+      <a href="#criacoes">Criações</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline" href="#contato">Tabela profissional</a>
+      <a class="btn btn-primary" href="https://wa.me/5511970741816?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20chocolates%20Canag%C3%A1." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+        WhatsApp
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close" id="closeNav">Fechar</button>
+  <a href="#chocolates">Chocolates</a><a href="#escolha">Qual usar?</a><a href="#origem">Origem</a><a href="#tecnica">Técnica</a><a href="#criacoes">Criações</a><a href="#faq">Dúvidas</a><a href="#contato">Tabela profissional</a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg"><img src="assets/temperagem-mesa.webp" alt="" fetchpriority="high"></div>
+  <div class="hero-veil"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow light">Chocolate profissional · Puro e nobre</span>
+      <h1>A nobreza do cacau amazônico, <em>na mão de quem cria.</em></h1>
+      <p>Três chocolates de origem, feitos para performar na cuba, na mesa de temperagem e no forno. Cacau da Amazônia, leite argentino e creme de leite uruguaio, em barras de 2,01 kg.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#chocolates">Conhecer os chocolates</a>
+        <a class="btn btn-ghost" href="#escolha">Qual chocolate usar?</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <img class="pack" src="assets/pack-amargo-hero.webp" alt="Embalagem Canagá Chocolate Amargo 70% cacau, 2,01 kg" width="1024" height="1024">
+      <div class="hero-chip one"><div><b>70%</b><small>Cacau amazônico</small></div></div>
+      <div class="hero-chip two"><div><b>2,01 kg</b><small>Peso líquido</small></div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Explorar</span><i></i></div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><b>Envio para todo o Brasil</b><span>Frete grátis nos destaques</span></div></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><div><b>Até 5x sem juros</b><span>No cartão de crédito</span></div></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4 4-6 7-6 11a6 6 0 0 0 12 0c0-4-2-7-6-11z"/><path d="M12 8v10"/></svg><div><b>100% cacau amazônico</b><span>Origem única, perfil marcante</span></div></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 7v10l8 4 8-4V7"/><path d="M12 11v10"/></svg><div><b>Barras de 2,01 kg</b><span>Formato pensado para produção</span></div></div>
+  </div>
+</div>
+
+<!-- PRODUTOS -->
+<section class="products" id="chocolates">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Linha Puro e Nobre</span>
+        <h2>Três chocolates. <em>Um padrão.</em></h2>
+      </div>
+      <p class="lead">Mesma origem de cacau, mesma exigência de processo. Escolha pelo percentual e pela aplicação.</p>
+    </div>
+    <div class="grid-3">
+
+      <article class="card reveal" data-delay="1">
+        <div class="card-media">
+          <span class="badge">Mais vendido</span><span class="badge ship">Frete grátis</span>
+          <img src="assets/pack-leite-640.webp" alt="Chocolate ao Leite Canagá 33,7% cacau" loading="lazy" width="640" height="640">
+          <img class="alt" src="assets/barra-leite-640.webp" alt="" loading="lazy" width="640" height="640">
+          <div class="pct">33,7%<small>cacau</small></div>
+        </div>
+        <div class="card-body">
+          <h3>Ao Leite<span>Chocolate ao Leite Canagá · 2,01 kg</span></h3>
+          <p>Cremoso e equilibrado, com o leite argentino aparecendo sem abafar o cacau. O coringa da produção: cobertura, recheio, bombom e massas.</p>
+          <div class="specs"><span>33,7% cacau</span><span>Leite argentino</span><span>Creme uruguaio</span><span>SKU 8548</span></div>
+          <details><summary>Aplicações sugeridas</summary><ul><li>Bombons e trufas moldadas</li><li>Cobertura de bolos e tortas</li><li>Ganaches e recheios cremosos</li><li>Drip, caldas e bebidas</li></ul></details>
+          <div class="card-foot">
+            <div class="price">Preço profissional<b>Solicite a tabela</b></div>
+            <a class="btn btn-primary" href="https://wa.me/5511970741816?text=Ol%C3%A1!%20Quero%20cota%C3%A7%C3%A3o%20do%20Chocolate%20ao%20Leite%20Canag%C3%A1%2033%2C7%25%202%2C01kg." target="_blank" rel="noopener">Cotar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <div class="card-media">
+          <span class="badge">Intenso</span><span class="badge ship">Frete grátis</span>
+          <img src="assets/pack-amargo-640.webp" alt="Chocolate Amargo Canagá 70% cacau" loading="lazy" width="640" height="640">
+          <img class="alt" src="assets/barra-amargo-640.webp" alt="" loading="lazy" width="640" height="640">
+          <div class="pct">70%<small>cacau</small></div>
+        </div>
+        <div class="card-body">
+          <h3>Amargo<span>Chocolate Amargo Canagá · 2,01 kg</span></h3>
+          <p>Cacau amazônico em primeiro plano: notas frutadas, final longo e amargor limpo. Para quem quer que o chocolate seja o protagonista do prato.</p>
+          <div class="specs"><span>70% cacau</span><span>Alta intensidade</span><span>Brilho e snap</span><span>SKU 8581</span></div>
+          <details><summary>Aplicações sugeridas</summary><ul><li>Casquinhas de bombom e tabletes</li><li>Ganache de corte e trufas</li><li>Brownies, cookies e massas</li><li>Sobremesas de restaurante</li></ul></details>
+          <div class="card-foot">
+            <div class="price">Preço profissional<b>Solicite a tabela</b></div>
+            <a class="btn btn-primary" href="https://wa.me/5511970741816?text=Ol%C3%A1!%20Quero%20cota%C3%A7%C3%A3o%20do%20Chocolate%20Amargo%20Canag%C3%A1%2070%25%202%2C01kg." target="_blank" rel="noopener">Cotar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-delay="3">
+        <div class="card-media">
+          <span class="badge">Delicado</span><span class="badge ship">Frete grátis</span>
+          <img src="assets/pack-branco-640.webp" alt="Chocolate Branco Canagá 26,2% cacau" loading="lazy" width="640" height="640">
+          <img class="alt" src="assets/barra-branco-640.webp" alt="" loading="lazy" width="640" height="640">
+          <div class="pct">26,2%<small>cacau</small></div>
+        </div>
+        <div class="card-body">
+          <h3>Branco<span>Chocolate Branco Canagá · 2,01 kg</span></h3>
+          <p>Manteiga de cacau nobre com o creme de leite uruguaio. Doçura controlada, cor marfim e fluidez para trabalhos finos e coloridos.</p>
+          <div class="specs"><span>26,2% cacau</span><span>Cor marfim</span><span>Base para corantes</span><span>SKU 8518</span></div>
+          <details><summary>Aplicações sugeridas</summary><ul><li>Bombons coloridos e pintados</li><li>Ganache de frutas e pistache</li><li>Coberturas de bolos e naked cakes</li><li>Mousses e cremes</li></ul></details>
+          <div class="card-foot">
+            <div class="price">Preço profissional<b>Solicite a tabela</b></div>
+            <a class="btn btn-primary" href="https://wa.me/5511970741816?text=Ol%C3%A1!%20Quero%20cota%C3%A7%C3%A3o%20do%20Chocolate%20Branco%20Canag%C3%A1%2026%2C2%25%202%2C01kg." target="_blank" rel="noopener">Cotar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="note reveal" style="text-align:center;margin-top:34px">Linha <b>Zero Açúcar</b> com a mesma base de cacau amazônico, leite argentino e creme uruguaio. <a href="#contato" style="color:var(--laranja);font-weight:600">Consultar disponibilidade →</a></p>
+  </div>
+</section>
+
+<!-- SELETOR -->
+<section class="selector" id="escolha">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow light">Guia rápido</span>
+      <h2>O que você vai <em>fazer hoje?</em></h2>
+      <p class="lead">Escolha a aplicação e veja qual Canagá entrega o melhor resultado. Sem achismo.</p>
+      <div class="chips" id="chips">
+        <button class="chip active" data-k="bombom">Bombons & trufas</button>
+        <button class="chip" data-k="cobertura">Cobertura de bolo</button>
+        <button class="chip" data-k="ganache">Ganache</button>
+        <button class="chip" data-k="massa">Brownie & cookies</button>
+        <button class="chip" data-k="colorido">Bombons coloridos</button>
+        <button class="chip" data-k="bebida">Bebidas & caldas</button>
+        <button class="chip" data-k="restaurante">Sobremesa de restaurante</button>
+      </div>
+    </div>
+    <div class="result reveal" id="result" data-delay="1">
+      <img id="rImg" src="assets/trufas-640.webp" alt="">
+      <div>
+        <div class="tag" id="rTag">Recomendação</div>
+        <h3 id="rTitle">Amargo 70% + Ao Leite 33,7%</h3>
+        <p id="rText">Casca de 70% para snap e brilho; recheio ao leite para cremosidade. O contraste é o que faz o bombom ser lembrado.</p>
+        <div class="why" id="rWhy">“O cacau amazônico sustenta o amargor sem adstringência.”</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGEM -->
+<section class="origem" id="origem">
+  <div class="wrap">
+    <div class="collage reveal">
+      <img class="a" src="assets/tempera-amargo.webp" alt="Chocolate amargo derretido em cuba" loading="lazy">
+      <img class="b" src="assets/barra-amargo-640.webp" alt="Barra Canagá amargo" loading="lazy">
+      <img class="c" src="assets/bombom-branco-640.webp" alt="Bombom de chocolate branco com pistache" loading="lazy">
+      <div class="stamp">Cacau amazônico · origem única</div>
+    </div>
+    <div class="reveal" data-delay="1">
+      <span class="eyebrow">Origem</span>
+      <h2>Tradição europeia, <em>alma amazônica.</em></h2>
+      <p>Um chocolate que não nasceu apenas de uma receita, mas da fusão entre a tradição europeia de chocolateria e a alma vibrante da América Latina. O cacau vem da Amazônia, com acidez frutada e corpo que nenhum blend consegue imitar.</p>
+      <p>Ao redor dele, só ingredientes que merecem estar lá: leite argentino de alta qualidade e creme de leite uruguaio. Nada de gordura substituta, nada de atalhos.</p>
+      <ul class="origin-list">
+        <li><div class="flag">🌿</div><div><b>Cacau da Amazônia</b><span>Perfil frutado e intenso, com corpo para aguentar qualquer aplicação.</span></div></li>
+        <li><div class="flag">🥛</div><div><b>Leite argentino</b><span>Cremosidade limpa no chocolate ao leite e no branco.</span></div></li>
+        <li><div class="flag">🧈</div><div><b>Creme de leite uruguaio</b><span>Textura e doçura equilibradas, sem pesar.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="numbers">
+  <div class="wrap">
+    <div class="reveal"><b data-count="100" data-suffix="%">0%</b><span>Cacau amazônico</span></div>
+    <div class="reveal" data-delay="1"><b data-count="3">0</b><span>Chocolates puro e nobre</span></div>
+    <div class="reveal" data-delay="2"><b data-count="2.01" data-dec="2" data-suffix=" kg">0 kg</b><span>Por barra</span></div>
+    <div class="reveal" data-delay="3"><b data-count="27">0</b><span>Estados atendidos</span></div>
+  </div>
+</div>
+
+<!-- TÉCNICA -->
+<section class="temper" id="tecnica">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Técnica</span>
+      <h2>Curva de temperagem <em>de referência.</em></h2>
+      <p class="lead" style="margin-top:14px">Chocolate puro e nobre precisa de temperagem. Selecione o tipo e siga as três etapas.</p>
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab active" data-t="amargo" role="tab">Amargo 70%</button>
+        <button class="tab" data-t="leite" role="tab">Ao Leite 33,7%</button>
+        <button class="tab" data-t="branco" role="tab">Branco 26,2%</button>
+      </div>
+    </div>
+    <div class="curve">
+      <div class="steps reveal" id="steps">
+        <div class="step" data-n="1"><small>Derreter</small><b id="t1">45–50<sup>°C</sup></b><p>Derreta completamente, em banho-maria ou micro-ondas em pulsos, mexendo sempre.</p></div>
+        <div class="step" data-n="2"><small>Resfriar</small><b id="t2">27–28<sup>°C</sup></b><p>Baixe a temperatura no mármore ou por semeadura até formar os cristais estáveis.</p></div>
+        <div class="step" data-n="3"><small>Trabalhar</small><b id="t3">31–32<sup>°C</sup></b><p>Reaqueça levemente e trabalhe. Teste em papel manteiga: deve endurecer com brilho em poucos minutos.</p></div>
+      </div>
+      <img class="reveal" data-delay="1" id="tImg" src="assets/temperagem-mesa.webp" alt="Temperagem de chocolate no mármore" loading="lazy">
+    </div>
+    <p class="note">Faixas gerais de referência para chocolate puro de manteiga de cacau. Siga as instruções da embalagem Canagá e ajuste conforme o ambiente da sua cozinha.</p>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="criacoes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow light">Criações</span>
+        <h2>Feito com Canagá, <em>feito para impressionar.</em></h2>
+      </div>
+      <p class="lead" style="color:rgba(255,255,255,.65)">Do bombom à cobertura: o mesmo chocolate, muitos resultados.</p>
+    </div>
+    <div class="masonry reveal" id="masonry">
+      <figure class="tall"><img src="assets/trufas.webp" alt="Trufas de chocolate ao leite" loading="lazy"><figcaption>Trufas ao leite</figcaption></figure>
+      <figure><img src="assets/bombom-branco-640.webp" alt="Bombom de chocolate branco com pistache" loading="lazy"><figcaption>Bombom branco e pistache</figcaption></figure>
+      <figure><img src="assets/cookie-640.webp" alt="Cookie com gotas de chocolate amargo" loading="lazy"><figcaption>Cookie 70%</figcaption></figure>
+      <figure class="wide"><img src="assets/cobertura-bolo.webp" alt="Cobertura de chocolate ao leite sendo despejada sobre bolo" loading="lazy"><figcaption>Cobertura espelhada</figcaption></figure>
+      <figure><img src="assets/brownie-640.webp" alt="Brownie de chocolate amargo" loading="lazy"><figcaption>Brownie 70%</figcaption></figure>
+      <figure class="tall"><img src="assets/bolo-branco.webp" alt="Bolo de chocolate branco" loading="lazy"><figcaption>Bolo branco</figcaption></figure>
+      <figure><img src="assets/ganache-640.webp" alt="Ganache de chocolate" loading="lazy"><figcaption>Ganache cremosa</figcaption></figure>
+      <figure><img src="assets/tempera-branco-640.webp" alt="Temperagem de chocolate branco" loading="lazy"><figcaption>Temperagem do branco</figcaption></figure>
+    </div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox"><button id="lbClose">Fechar ✕</button><img id="lbImg" src="" alt=""></div>
+
+<!-- PARA QUEM -->
+<section class="quem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Para quem</span>
+        <h2>Pensado para <em>quem produz.</em></h2>
+      </div>
+      <p class="lead">Formato de produção, consistência de lote e preço profissional.</p>
+    </div>
+    <div class="grid-4">
+      <div class="who reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14h16v6H4zM6 14V9a6 6 0 0 1 12 0v5"/></svg></div><h3>Confeitarias</h3><p>Volume diário com repetibilidade. Mesmo brilho, mesmo sabor, lote após lote.</p></div>
+      <div class="who reveal" data-delay="1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Chocolatiers</h3><p>Fluidez para moldagem fina e cacau de origem que vira argumento de venda.</p></div>
+      <div class="who reveal" data-delay="2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11c0-4 4-7 9-7s9 3 9 7-4 7-9 7-9-3-9-7z"/><path d="M3 11v5c0 2 4 4 9 4s9-2 9-4v-5"/></svg></div><h3>Padarias</h3><p>Resiste ao forno em massas, cookies e pães sem perder a identidade.</p></div>
+      <div class="who reveal" data-delay="3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 20h14M7 20V8a5 5 0 0 1 10 0v12"/><path d="M12 3v2"/></svg></div><h3>Restaurantes</h3><p>Sobremesas autorais com um chocolate que tem história para contar no cardápio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Dúvidas</span>
+      <h2>Antes de <em>pedir.</em></h2>
+      <p class="lead" style="margin-top:14px">Não achou sua resposta? Fale com a gente no WhatsApp.</p>
+      <a class="btn btn-outline" href="https://wa.me/5511970741816" target="_blank" rel="noopener" style="margin-top:24px">Falar com a Canagá</a>
+    </div>
+    <div class="acc reveal" data-delay="1">
+      <details open><summary>É chocolate puro ou cobertura fracionada?<i>+</i></summary><p>Puro e nobre. A gordura é manteiga de cacau, por isso precisa de temperagem e entrega brilho, snap e sabor de verdade.</p></details>
+      <details><summary>Qual o tamanho da barra?<i>+</i></summary><p>Cada embalagem tem 2,01 kg de peso líquido, formato pensado para produção profissional.</p></details>
+      <details><summary>Vocês entregam para todo o Brasil?<i>+</i></summary><p>Sim. Calcule o frete pelo CEP na loja ou peça uma cotação pelo WhatsApp. Os três chocolates em destaque têm frete grátis.</p></details>
+      <details><summary>Como funciona o pagamento?<i>+</i></summary><p>Cartão de crédito em até 5x sem juros, além das outras formas disponíveis no checkout.</p></details>
+      <details><summary>Tem desconto para volume ou revenda?<i>+</i></summary><p>Sim. Solicite a tabela profissional no formulário abaixo informando seu tipo de negócio e consumo mensal estimado.</p></details>
+      <details><summary>Como armazenar?<i>+</i></summary><p>Local seco, fresco (ideal entre 15 e 20 °C), longe de luz, umidade e odores fortes. Mantenha a embalagem bem fechada.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow light">Tabela profissional</span>
+      <h2>Condições especiais para <em>quem produz.</em></h2>
+      <p class="lead">Preencha e receba a tabela com preços e condições de volume direto no seu WhatsApp. Leva menos de um minuto.</p>
+      <ul style="list-style:none;margin-top:30px;display:grid;gap:12px;color:rgba(255,255,255,.8);font-size:15px">
+        <li>✦ Preços por volume e recorrência</li>
+        <li>✦ Atendimento direto pelo WhatsApp</li>
+        <li>✦ Suporte na escolha do chocolate certo</li>
+      </ul>
+    </div>
+    <form class="form reveal" id="leadForm" data-delay="1">
+      <div class="row">
+        <label>Nome<input name="nome" required placeholder="Seu nome"></label>
+        <label>Empresa<input name="empresa" placeholder="Nome do negócio"></label>
+      </div>
+      <div class="row">
+        <label>Tipo de negócio<select name="tipo" required>
+          <option value="">Selecione</option><option>Confeitaria</option><option>Chocolateria</option><option>Padaria</option><option>Restaurante</option><option>Revenda / distribuição</option><option>Outro</option></select></label>
+        <label>Cidade / UF<input name="cidade" placeholder="Ex.: São Paulo / SP"></label>
+      </div>
+      <label>Interesse<select name="interesse">
+        <option>Ao Leite 33,7%</option><option>Amargo 70%</option><option>Branco 26,2%</option><option>Os três</option><option>Linha Zero Açúcar</option></select></label>
+      <label>Consumo mensal estimado<select name="consumo"><option>Até 10 kg</option><option>10 a 50 kg</option><option>50 a 200 kg</option><option>Acima de 200 kg</option></select></label>
+      <button class="btn btn-gold" type="submit">Receber tabela no WhatsApp →</button>
+      <small>Abre uma conversa no WhatsApp com seus dados preenchidos. Sem spam.</small>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Canagá">
+      <p>Chocolates profissionais com cacau amazônico para confeitaria, panificação e chocolateria.</p>
+      <div class="social">
+        <a href="https://instagram.com/canaga.br" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://tiktok.com/@canaga.br" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 3.8 4 4v3c-1.5 0-2.9-.5-4-1.3V15a5.5 5.5 0 1 1-5.5-5.5h.5v3h-.5a2.5 2.5 0 1 0 2.5 2.5V3h3z"/></svg></a>
+        <a href="https://wa.me/5511970741816" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Chocolates</h4><ul><li><a href="#chocolates">Ao Leite 33,7%</a></li><li><a href="#chocolates">Amargo 70%</a></li><li><a href="#chocolates">Branco 26,2%</a></li><li><a href="#contato">Zero Açúcar (sob consulta)</a></li></ul></div>
+    <div><h4>Canagá</h4><ul><li><a href="#origem">Origem</a></li><li><a href="#tecnica">Temperagem</a></li><li><a href="#criacoes">Criações</a></li><li><a href="#faq">Dúvidas</a></li></ul></div>
+    <div><h4>Atendimento</h4><ul><li><a href="https://wa.me/5511970741816" target="_blank" rel="noopener">WhatsApp (11) 97074-1816</a></li><li><a href="#contato">Tabela profissional</a></li><li><a href="https://canaga.com.br" target="_blank" rel="noopener">Loja online</a></li></ul></div>
+  </div>
+  <div class="wrap copy" style="display:flex">
+    <span>© <span id="year"></span> Canagá Chocolates Profissionais. Todos os direitos reservados.</span>
+    <span>Envios para todo o Brasil · Parcele em até 5x sem juros</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5511970741816?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Canag%C3%A1." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg></a>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  // ticker duplication for seamless loop
+  var t=document.getElementById('ticker'); t.innerHTML+=t.innerHTML;
+
+  // header
+  var h=document.getElementById('header');
+  var onScroll=function(){h.classList.toggle('scrolled',scrollY>20)}; onScroll(); addEventListener('scroll',onScroll,{passive:true});
+
+  // mobile nav
+  var mn=document.getElementById('mobileNav');
+  document.getElementById('burger').onclick=function(){mn.classList.add('open')};
+  document.getElementById('closeNav').onclick=function(){mn.classList.remove('open')};
+  mn.querySelectorAll('a').forEach(function(a){a.onclick=function(){mn.classList.remove('open')}});
+
+  // reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  // counters
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),suf=el.dataset.suffix||'',t0=null;
+    (function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);p=1-Math.pow(1-p,3);el.textContent=(end*p).toFixed(dec).replace('.',',')+suf;if(p<1)requestAnimationFrame(step)})(performance.now());
+  })},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+
+  // selector
+  var R={
+    bombom:{img:'assets/trufas-640.webp',tag:'Combinação',title:'Amargo 70% + Ao Leite 33,7%',text:'Casca de 70% para snap e brilho; recheio ao leite para cremosidade. O contraste é o que faz o bombom ser lembrado.',why:'“O cacau amazônico sustenta o amargor sem adstringência.”'},
+    cobertura:{img:'assets/cobertura-bolo-640.webp',tag:'Recomendação',title:'Ao Leite 33,7%',text:'Fluidez para cobrir com uma passada só e brilho que segura na vitrine. Para um visual mais escuro, misture com 70%.',why:'“Leite argentino: cremoso sem ficar enjoativo.”'},
+    ganache:{img:'assets/ganache-640.webp',tag:'Recomendação',title:'Amargo 70%',text:'Ganache de corte firme e sabor profundo. Proporção de partida 1:1 com creme de leite; ajuste para 2:1 se for modelar trufas.',why:'“Quanto mais cacau, mais estrutura e menos açúcar na ganache.”'},
+    massa:{img:'assets/brownie-640.webp',tag:'Recomendação',title:'Amargo 70%',text:'Resiste ao forno sem perder identidade. Em pedaços, derrete no ponto certo e deixa o miolo úmido no brownie e no cookie.',why:'“Chocolate puro em massa: sabor que aparece, não só cor.”'},
+    colorido:{img:'assets/bombom-branco-640.webp',tag:'Recomendação',title:'Branco 26,2%',text:'Cor marfim limpa que aceita corante lipossolúvel sem acinzentar. Doçura controlada para equilibrar recheios de fruta e pistache.',why:'“Manteiga de cacau nobre: a base perfeita para pintura.”'},
+    bebida:{img:'assets/tempera-amargo-640.webp',tag:'Combinação',title:'Ao Leite 33,7% ou Amargo 70%',text:'Ao leite para chocolate quente cremoso e caldas; 70% para bebidas intensas e drip escuro. Derreta e incorpore ao líquido aos poucos.',why:'“Sem gordura substituta, a bebida fica aveludada.”'},
+    restaurante:{img:'assets/tempera-branco-640.webp',tag:'Combinação',title:'Os três',text:'Sobremesas autorais pedem contraste: mousse de 70%, crocante de leite e espuma de branco. Uma origem, três texturas.',why:'“Cacau amazônico vira história no cardápio.”'}
+  };
+  var res=document.getElementById('result');
+  document.getElementById('chips').addEventListener('click',function(e){
+    var b=e.target.closest('.chip'); if(!b)return;
+    document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active')}); b.classList.add('active');
+    var d=R[b.dataset.k]; res.classList.add('fade');
+    setTimeout(function(){
+      document.getElementById('rImg').src=d.img; document.getElementById('rTag').textContent=d.tag;
+      document.getElementById('rTitle').textContent=d.title; document.getElementById('rText').textContent=d.text; document.getElementById('rWhy').textContent=d.why;
+      res.classList.remove('fade');
+    },300);
+  });
+
+  // temper tabs
+  var T={amargo:['45–50','27–28','31–32','assets/temperagem-mesa.webp'],leite:['45–48','26–27','29–30','assets/cobertura-bolo.webp'],branco:['40–45','25–26','28–29','assets/tempera-branco.webp']};
+  document.getElementById('tabs').addEventListener('click',function(e){
+    var b=e.target.closest('.tab'); if(!b)return;
+    document.querySelectorAll('.tab').forEach(function(c){c.classList.remove('active')}); b.classList.add('active');
+    var d=T[b.dataset.t];
+    ['t1','t2','t3'].forEach(function(id,i){document.getElementById(id).innerHTML=d[i]+'<sup>°C</sup>'});
+    var img=document.getElementById('tImg'); img.style.opacity=0; setTimeout(function(){img.src=d[3]; img.style.opacity=1},250);
+  });
+
+  // lightbox
+  var lb=document.getElementById('lightbox'),lbi=document.getElementById('lbImg');
+  document.getElementById('masonry').addEventListener('click',function(e){var f=e.target.closest('figure');if(!f)return;lbi.src=f.querySelector('img').src.replace('-640',''); lbi.alt=f.querySelector('img').alt; lb.classList.add('open')});
+  var closeLb=function(){lb.classList.remove('open')};
+  document.getElementById('lbClose').onclick=closeLb; lb.onclick=function(e){if(e.target===lb)closeLb()};
+  addEventListener('keydown',function(e){if(e.key==='Escape'){closeLb();mn.classList.remove('open')}});
+
+  // lead form -> WhatsApp
+  var toast=document.getElementById('toast');
+  document.getElementById('leadForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=new FormData(this),g=function(k){return f.get(k)||'-'};
+    var msg='Olá! Quero receber a tabela profissional Canagá.\n\n'+
+      'Nome: '+g('nome')+'\nEmpresa: '+g('empresa')+'\nTipo de negócio: '+g('tipo')+'\nCidade: '+g('cidade')+
+      '\nInteresse: '+g('interesse')+'\nConsumo mensal: '+g('consumo');
+    window.open('https://wa.me/5511970741816?text='+encodeURIComponent(msg),'_blank','noopener');
+    toast.textContent='Abrindo o WhatsApp com seus dados…'; toast.classList.add('show'); setTimeout(function(){toast.classList.remove('show')},3500);
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
